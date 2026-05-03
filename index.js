@@ -1,19 +1,8 @@
 const readline = require('readline-sync');
 
-// Input type
-const inputType = readline.question('Input Income or Expense ? (I/E)');
-const inputAmount = +readline.question('How much amount : ');
-const inputDesc = readline.question('Description : ');
-
-
-// Type Of
-// const transactions = {
-//     type = inputType ,
-//     amount = inputAmount ,
-//     desc = inputDesc,
-// };
 
 let balances = 0;
+let arrTransactions =[];
 
 const determineAmount = (inputType, inputAmount) => {
     switch (inputType) {
@@ -22,4 +11,27 @@ const determineAmount = (inputType, inputAmount) => {
     }
 }
 
-console.log(`\n balance : ${determineAmount(inputType, inputAmount)}`);
+let inputType;
+let inputAmount;
+let inputDesc;
+
+do {
+    // Input
+    inputType = readline.question('Input Income or Expense or Done: ');
+
+    if (inputType === 'Done') break ;
+    if (inputType !== 'Income' && inputType !== 'Expense'){
+        console.log('Plese input Income, Expense, or Done');
+        continue;
+    }
+
+    inputAmount = +readline.question('How much amount : ')
+    inputDesc = readline.question('Description : '); 
+
+    // Call function
+    const Amount = determineAmount(inputType, inputAmount);    
+} 
+while (inputType !== 'Done') 
+
+    console.log(`\n Total balance : ${balances}`);    
+
