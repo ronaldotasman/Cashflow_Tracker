@@ -2,14 +2,21 @@ const readline = require('readline-sync');
 
 
 let balances = 0;
-let arrTransactions =[];
 
-const determineAmount = (inputType, inputAmount) => {
+
+const determineBalance = (inputType, inputAmount) => {
     switch (inputType) {
         case 'Income': return balances = balances + inputAmount;
-        case 'Expense' : return balances = balances - inputAmount ;
+        case 'Expense' : return balances = balances - inputAmount;
     }
 }
+
+// let arrTransactions =[
+//     {
+//         type : inputType,
+//         amount
+//     }
+// ];
 
 let inputType;
 let inputAmount;
@@ -25,13 +32,12 @@ do {
         continue;
     }
 
-    inputAmount = +readline.question('How much amount : ')
+    inputAmount = +readline.question('How much amount : ');
     inputDesc = readline.question('Description : '); 
 
     // Call function
-    const Amount = determineAmount(inputType, inputAmount);    
+    determineBalance(inputType, inputAmount);    
 } 
 while (inputType !== 'Done') 
-
-    console.log(`\n Total balance : ${balances}`);    
+    console.log(`\nTotal balance : ${balances}`);    
 
